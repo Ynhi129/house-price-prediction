@@ -6,7 +6,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 
 # Đảm bảo thư mục đầu ra tồn tại
@@ -49,7 +49,7 @@ preprocessor = ColumnTransformer(
 print("--- 4. Tích hợp thuật toán Linear Regression vào Pipeline ---")
 model_pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
-    ('regressor', LinearRegression())
+    ('regressor', Ridge(alpha=1.0))
 ])
 
 print("--- 5. Tách tập Train/Validation cục bộ để đánh giá thử ---")
